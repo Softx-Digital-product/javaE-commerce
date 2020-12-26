@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>imall | Login and Registration Form</title>
-        <link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="CSS/style.css">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body background="Images/banners.jpg">
         <div class="hero">
@@ -18,15 +19,19 @@
            </div>
            <form id="login" class ="input-group">
            	<input type="text" class="input-field" placeholder="User ID" required>
-           	<input type="text" class="input-field" placeholder="Enter Password"required>
-           	<input type="checkbox" class="chech-box"><span>Remember Password</span>
+			   <input type="password" class="input-field" placeholder="Enter Password"required>
+			   <br><br>
+			<div class="g-recaptcha" data-sitekey="6LeJgRQaAAAAAOVgF_5JfWByRx2-aWQw0-ajqtyk"></div><Br><Br>
+			
            	<button type="submit" class="submit-btn">Log in</button>
            </form>
            <form id="register" class="input-group">
            	<input type="text" class="input-field"placeholder="First Name" required>
 			<input type="text" class="input-field"placeholder="Last Name" required>
 			<input type="email" class="input-field"placeholder="Email ID" required>
-           	<input type="text" class="input-field" placeholder="Enter Password"required>
+			<input type="password" class="input-field" placeholder="Enter Password"required><br>
+			<br>
+			<div class="g-recaptcha" data-sitekey="6LeJgRQaAAAAAOVgF_5JfWByRx2-aWQw0-ajqtyk"></div>
            	<input type="checkbox" class="chech-box"><span>I agree to the terms and conditions</span>
            	<button type="submit" class="submit-btn">Register</button>
            </form>
@@ -47,6 +52,8 @@
            		y.style.left ="450px";
            		z.style.left ="0";
            	}
-           </script>
+		   </script>
+		   
+		  
     </body>
 </html>

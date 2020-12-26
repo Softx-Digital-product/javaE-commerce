@@ -4,7 +4,10 @@
     font-family: sans-serif;  
     
 }
-
+body {
+	
+	background-repeat: no-repeat;
+  }
 .hero{
     height: 100%;
     width: 100%;
@@ -15,7 +18,7 @@
 }
 .form-box{
 	width: 380px;
-	height: 480px;
+	height: 580px;
 	position: relative;
 	margin: 6% auto;
 	background: #fff;
