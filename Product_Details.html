@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+       *{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        padding: 0; 
+        margin: 0;
+        user-select: none;
+     }
+
+  .modal-body{
+    width: auto;
+    padding: 20px;
+    height: 300px;
+    color: black; 
+  }
+
+  .modal-body input{
+    display: none;
+  }
+
+  .modal-body .preview{
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-body img{
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  .modal-footer{  
+    justify-content: center;
+    align-content: center;
+  }
+    
+  </style>
+  
+</head>
+<body>
+<div class="container">
+      <section class="text-center bg-primary text-white -0">
+              <div class="py-3 mt-3 w-auto font-weight-bolder" style="font-size: 40px;">
+                
+              <h1>Product Details</h1>
+              </div>
+      </section>
+            <hr class="mt-3 bg-dark">
+        <form action="" class="mt-3" autocomplete="off">
+            <div class="row" > 
+            <div class="form-group col-lg-6 col-md-6 col-12">
+            <label for="RID">Retailer ID:</label>
+            <input type="text" class="form-control" id="RID" placeholder="retailer id" name="retailerid" >
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-12">
+            <label for="PID">Product ID:</label>
+            <input type="text" class="form-control" id="PID" placeholder="product id" name="productid">
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="Pt">Product Type:</label>
+            <select class="form-control" id="Pna" placeholder="name of product" name="productname">
+              <option name="Accessories">Accessories</option>
+              <option name="Lohar"></option>
+              <option name="Kunbi"></option>
+              <option name="Sawant"></option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Pna">Product Name:</label>
+            <input type="text" class="form-control" id="Pna" placeholder="name of product" name="productname">
+          </div>
+          <div class="form-group">
+            <label for="Pprice">Product Price:</label>
+            <input type="number" class="form-control" id="Pprice" placeholder="Price in ₹" min="1" data-type="currency">
+          </div>
+          
+          <div class="row"> 
+            <div class="form-group col-lg-6 col-md-6 col-12">
+            <label for="discount">Discount (%):</label>
+            <input type="number" class="form-control" id="discount" placeholder="in Percentage" min="1" max="100" name="Discount" data-type="Number">
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-12">
+            <label for="Fprice">Product Price (After Discount):</label>
+            <input type="number" class="form-control" id="Fprice" min="1" onclick="Mname()" data-type="currency" placeholder="null">
+          </div>
+        </div>
+
+        <script>
+          function Mname() {
+            var num1=Number(document.getElementById('Pprice').value);
+            var num2=Number(document.getElementById('discount').value)/100;
+            var num3=num1-(num1*num2);
+            document.getElementById('Fprice').value=num3.toFixed(2);
+  
+          }
+      </script>
+          <div class="form-group">
+            <label for="PCo">Product Coupon:</label>
+            <input type="number" class="form-control" id="PCo" placeholder="null">
+          </div>
+       
+          <div class="form-group">
+            <label for="PD">Product Discription:</label>
+            <textarea class="form-control" placeholder="enter all the details of our product" name="prduct discription" id="PD" cols="30" rows="10"></textarea>
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          
+          <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#myModal">Add Product images</button>
+          <button type="submit" class="btn btn-success mx-2 my-4">Submit</button>
+        
+           <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content m-2">
+      
+        <!-- Modal Header -->
+        <div class="modal-header bg-secondary text-white">
+          <h4 class="modal-title ">Add Product image here...</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+         <div class="modal-body">
+           <input type="file" name="img" id="ip" accept="image/*" onchange="showPriview(event)">
+            <div class="preview">
+              <img id="ip-1">
+            </div>
+          </div>
+<script type="text/javascript">
+  function showPriview(event) {
+    // body...
+    if(event.target.files.length > 0) {
+      var src=URL.createObjectURL(event.target.files[0]);
+      var preview=document.getElementById("ip-1");
+      preview.src=src;
+      preview.style.display="block"
+    }
+  }
+</script>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer bg-secondary">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <label for="ip" class="btn btn-primary">Upload</label>
+        <button type="submit" class="btn btn-success">Submit</button>
+
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</form>
+
+
+</div>  
+
+<footer class="text-gray-700 body-font  bg-gray-600">
+    <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-no-wrap flex-wrap flex-col">
+      <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl">D-Market</span>
+        </a>
+        <p class="mt-2 text-sm text-white 500">Digital-Market</p>
+      </div>
+      <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-4">HELP & INFORMATION </h2>
+          <P style="color:white;">FOR ANY QUESTIONS? CALL US 24/7 <br>
+            +91 8369060978</P><BR>
+             
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-4">QUICK LINKS</h2>
+          <nav class="list-none mb-10">
+            <u><li>
+              <a class="text-white hover:text-green-200">Orders</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">Track Orders</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">Addresses</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">Account Details</a>
+            </li>
+            <li>
+                <a class="text-white hover:text-green-200 ">Lost Password</a>
+              </li></u>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-5">CONNECT WITH US</h2>
+          <nav class="list-none mb-10">
+            <u><li>
+              <a  href="https://www.instagram.com/softx_digital_market/"  class="text-white hover:text-green-200">Instagram</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/softx_digital_market/" class="text-white hover:text-green-200">Facebook</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/softx_digital_market/" class="text-white hover:text-green-200">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/softx_digital_market/" class="text-white hover:text-green-200">Telegram</a>
+            </li></u>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-5">LET'S US HElP YOU</h2>
+          <nav class="list-none mb-100">
+           <u><li>
+              <a class="text-white hover:text-green-200">Covid-19 Tracker</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">Returns Center</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">D-Market App Download</a>
+            </li>
+            <li>
+              <a class="text-white hover:text-green-200">Help</a>
+            </li></u>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-800">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-500 text-sm text-center sm:text-left">© 2020-2022 Softx & D-Market —
+          <a href="https://rtssoftwares.tk" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@rtssoftwares</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a class="text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+  </footer>
+
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    
+</html>
+
+
