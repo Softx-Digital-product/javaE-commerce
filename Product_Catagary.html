@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     
+</head>
+<body>
+    <section class=" bg-dark text-white -0">
+        <div class="px-5 py-2 mt-3 w-auto font-weight-bolder" style="font-size: 50px;">
+      <p>Admin</p>
+        </div>
+    </section>
+    <div id="mySidebar" class="sidebar bg-dark">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#">Home</a>
+        <a class="dropdown-btn">Add Product 
+            <i class="fa fa-caret-down"></i></a>
+          <div class="dropdown-container">
+            <a href="Product_Details(1).html">Product_Details</a>
+            <a href="Product_Catagary.html">Product Catagary</a>
+            <a href="Coupon_Code.html">Coupon</a>
+          </div>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+      
+      <div id="main">
+        <div class="btn">
+        <button class="openbtn px-2" onclick="openNav()" id="btn">☰</button>
+        </div> 
+        <form action="" class=" mt-2 " autocomplete="off">
+          <div class="hed mt-3"> 
+            <strong><h4>Product Catagory and other details:</h4></strong>
+            <hr>
+        </div>
+          <div class="form-group mt-4">
+            <label for="PD">Product Catagory</label>
+            <select name="cat" id="cata" class="form-control"> 
+              <option value="">Home and Accessories</option>
+              <option value="">Cloath</option>
+              </select>
+          </div>
+          <div class="form-group " >
+            <label for="Pna">Quantity:</label>
+            <input type="number" class="form-control" min="1" max="10000" id="Pna" placeholder="name of product" name="productname">
+          </div>
+          <div class="form-group " >
+            <label for="Pna">Color:</label>
+            <select name="cat" id="cata" class="form-control"> 
+              <option value="">(none)</option>
+              <option value="Green">Green</option>
+              <option value="Yellow">Yellow</option>
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Green">blue</option>
+              <option value="Red">Red</option>
+              <option value="Grey">Grey</option>
+              <option value="Violet">Violet</option>
+    </select>
+          </div>
+        </form> 
+   </div>
+
+   <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      document.getElementById("btn").style.visibility="hidden";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      document.getElementById("btn").style.visibility="visible";
+    }
+
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+        
+        for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+          } else {
+          dropdownContent.style.display = "block";
+          }
+    });
+}
+    </script>
+</body>
+</html>
